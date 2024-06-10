@@ -1,0 +1,82 @@
+<robot name="servoarm">
+
+  <material name="grey">
+      <color rgba="0.7 0.7 0.7 1" />
+  </material>
+
+  <material name="green">
+      <color rgba="0 0.6 0 1" />
+  </material>
+  
+  <material name="white">
+      <color rgba="1 1 1 1"/>
+  </material>>
+
+  <link name="base_link">
+	<visual>
+         <geometry>
+          <mesh filename="package://pan_tilt_urdf/meshes/base_cylinder.stl" scale ="0.0001 0.0001 0.0001"/>
+         </geometry>
+         <origin xyz="0 0 0.01"/>
+         <material name="black">
+           <color rgba="0 0 0 1"/>
+         </material>
+        </visual>
+	<collision>
+         <geometry>
+          <mesh filename="package://pan_tilt_urdf//meshes/base_cylinder.stl" scale ="0.0001 0.0001 0.0001"/>
+         </geometry>
+         <origin xyz="0 0 0.01"/>
+        </collision>
+  </link>
+
+  <link name="platform">
+	<visual>
+         <geometry>
+          <mesh filename="package://pan_tilt_urdf/meshes/top_plate.stl" scale ="0.001 0.001 0.001"/>
+         </geometry>
+         <origin xyz="0 0 0"/>
+         <material name="green"/>
+        </visual>
+	<collision>
+         <geometry>
+          <mesh filename="package://pan_tilt_urdf/meshes/top_plate.stl" scale ="0.001 0.001 0.001"/>
+         </geometry>
+         <origin xyz="0 0 0"/>
+        </collision>
+  </link>
+
+  <link name="lower_arm">
+	<visual>
+         <geometry>
+          <mesh filename="package://pan_tilt_urdf/meshes/lower_arm.stl" scale ="0.001 0.001 0.001"/>
+         </geometry>
+         <origin xyz="0 0 0"/>
+         <material name="grey"/>
+        </visual>
+	<collision>
+         <geometry>
+          <mesh filename="package://pan_tilt_urdf/meshes/lower_arm.stl" scale ="0.001 0.001 0.001"/>
+         </geometry>
+         <origin xyz="0 0 0"/>
+        </collision>
+  </link>
+
+ 
+  <joint name="joint1" type="revolute">
+    <axis xyz="0 0 1" />
+    <limit effort="1000.0" lower="1.56" upper="4.68" velocity="1.0" />
+    <parent link="base_link"/>
+    <child link="platform"/>
+    <origin rpy="0 0 1.5" xyz="0 0 0.48"/>
+  </joint>
+
+  <joint name="joint2" type="revolute">
+    <axis xyz="1 0 0" />
+    <limit effort="1000.0" lower="0.0" upper="3.12" velocity="1.0" />
+    <parent link="platform"/>
+    <child link="lower_arm"/>
+    <origin xyz="0 0.19 0.28"/>
+  </joint>
+
+ </robot>

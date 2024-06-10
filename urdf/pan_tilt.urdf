@@ -1,4 +1,4 @@
-<robot name="servoarm">
+<robot name="pan_tilt">
 
   <material name="grey">
       <color rgba="0.7 0.7 0.7 1" />
